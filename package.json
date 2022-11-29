@@ -10,7 +10,8 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "test": "DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config"
+    "test": "DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config",
+    "test-coverage": "DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config --coverage"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/wecode-bootcamp-korea/39-2nd-Just-We-Air-backend#readme",
   "dependencies": {
+    "axios": "^1.2.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dbmate": "^1.0.3",

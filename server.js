@@ -15,7 +15,7 @@ const startServer = async () => {
       console.error("Error during Data Source initialization", err);
     });
   app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}~~`);
+    console.log(`Listening on port ${PORT}`);
   });
 };
 
