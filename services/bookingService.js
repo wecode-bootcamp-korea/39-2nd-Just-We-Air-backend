@@ -1,7 +1,12 @@
 const bookingDao = require("../models/bookingDao");
 
-const getcities = async () => {
-  return await bookingDao.getcities();
+const getCities = async () => {
+  return await bookingDao.getCities();
 };
 
-module.exports = { getcities };
+const searchFlight = async (date, departureId, arrivalId) => {
+  const flights = await bookingDao.searchFlight(date, departureId, arrivalId);
+  return flights;
+};
+
+module.exports = { getCities, searchFlight };
