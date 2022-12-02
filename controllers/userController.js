@@ -9,11 +9,11 @@ const signIn = catchAsync(async (req, res) => {
   return res.status(200).json(data);
 });
 
-const userUpdate = catchAsync(async (req, res) => {
+const updateUser = catchAsync(async (req, res) => {
   const userId = req.user.id;
   const { first_name, last_name, birth, mobile_number, email } = req.body;
 
-  const result = await userService.updateUserInfo(
+  await userService.updateUserInfo(
     userId,
     first_name,
     last_name,
@@ -30,6 +30,6 @@ const getUserInfo = catchAsync(async (req, res) => {
 
 module.exports = {
   signIn,
-  userUpdate,
+  updateUser,
   getUserInfo,
 };
