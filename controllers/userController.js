@@ -1,19 +1,27 @@
 const userService = require("../services/userService");
-const { catchAsync } = require("../utils/error");
+const { catchAsync, raiseCustomError } = require("../utils/error");
 
 const signIn = catchAsync(async (req, res) => {
   const { kakaoAccessToken } = req.body;
+
+  if (!kakaoAccessToken) {
+    raiseCustomError("BAD_REQUEST", 400);
+  }
 
   const data = await userService.getKakaoUserInfo(kakaoAccessToken);
 
   return res.status(200).json(data);
 });
 
-const userUpdate = catchAsync(async (req, res) => {
+const updateUser = catchAsync(async (req, res) => {
   const userId = req.user.id;
   const { first_name, last_name, birth, mobile_number, email } = req.body;
 
-  const result = await userService.updateUserInfo(
+  if (!first_name || !last_name || !birth || !mobile_number || !email) {
+    raiseCustomError("BAD_REQUEST", 400);
+  }
+
+  await userService.updateUserInfo(
     userId,
     first_name,
     last_name,
@@ -25,11 +33,13 @@ const userUpdate = catchAsync(async (req, res) => {
 });
 
 const getUserInfo = catchAsync(async (req, res) => {
-  return res.status(200).json(req.user);
+  userId = req.user;
+  data = await userService.getUserById(userId);
+  return res.status(200).json(data);
 });
 
 module.exports = {
   signIn,
-  userUpdate,
+  updateUser,
   getUserInfo,
 };

@@ -61,8 +61,8 @@ const updateUserInfo = async (
   );
 };
 
-const getUserById = async (id) => {
-  return await userDao.getUserById(id);
+const getUserById = async (userId) => {
+  return await userDao.getUserById(userId);
 };
 
 module.exports = {

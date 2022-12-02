@@ -9,9 +9,34 @@ describe("book tickets", () => {
   beforeAll(async () => {
     app = createApp();
     await appDataSource.initialize();
+
+    await appDataSource.query(`set FOREIGN_KEY_CHECKS = 0`);
+    await appDataSource.query(`TRUNCATE TABLE countries`);
+    await appDataSource.query(`TRUNCATE TABLE cities`);
+    await appDataSource.query(`TRUNCATE TABLE orders_tickets`);
+    await appDataSource.query(`TRUNCATE TABLE orders`);
+    await appDataSource.query(`TRUNCATE TABLE passengers`);
+    await appDataSource.query(`TRUNCATE TABLE tickets_options`);
+    await appDataSource.query(`TRUNCATE TABLE tickets`);
+    await appDataSource.query(`TRUNCATE TABLE cabin_types`);
+    await appDataSource.query(`TRUNCATE TABLE order_stauts`);
+    await appDataSource.query(`TRUNCATE TABLE users`);
+    await appDataSource.query(`set FOREIGN_KEY_CHECKS = 1`);
   });
 
   afterAll(async () => {
+    await appDataSource.query(`set FOREIGN_KEY_CHECKS = 0`);
+    await appDataSource.query(`TRUNCATE TABLE orders_tickets`);
+    await appDataSource.query(`TRUNCATE TABLE orders`);
+    await appDataSource.query(`TRUNCATE TABLE passengers`);
+    await appDataSource.query(`TRUNCATE TABLE tickets_options`);
+    await appDataSource.query(`TRUNCATE TABLE tickets`);
+    await appDataSource.query(`TRUNCATE TABLE cabin_types`);
+    await appDataSource.query(`TRUNCATE TABLE order_stauts`);
+    await appDataSource.query(`TRUNCATE TABLE cities`);
+    await appDataSource.query(`TRUNCATE TABLE countries`);
+    await appDataSource.query(`TRUNCATE TABLE users`);
+    await appDataSource.query(`set FOREIGN_KEY_CHECKS = 1`);
     await appDataSource.destroy();
   });
 
