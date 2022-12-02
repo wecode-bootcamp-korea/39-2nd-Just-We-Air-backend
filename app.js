@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 
-const { globalErrorHandler } = require("./utils/error");
 const route = require("./routes");
+const { globalErrorHandler } = require("./utils/error");
 
 const createApp = () => {
   const app = express();
@@ -14,6 +14,7 @@ const createApp = () => {
 
   app.use(route);
   app.use(globalErrorHandler);
+
   return app;
 };
 

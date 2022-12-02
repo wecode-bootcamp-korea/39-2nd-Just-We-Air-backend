@@ -19,7 +19,7 @@ const loginRequired = async (req, res, next) => {
     if (!user) {
       return res.status(401).json({ message: "USER_DOES_NOT_EXIST" });
     }
-    req.user = user;
+    req.user = user.id;
 
     next();
   } catch (err) {
