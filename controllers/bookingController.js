@@ -31,4 +31,29 @@ const searchFlight = catchAsync(async (req, res) => {
   return res.status(200).json({ tickets: flights });
 });
 
-module.exports = { getCities, searchFlight };
+const getLowestPrice = catchAsync(async (req, res) => {
+  const { date, departureId, arrivalId } = req.query;
+  const MINDEPARTUREID = 1;
+  const MAXDEPARTUREID = 11;
+
+  if (!date || !departureId || !arrivalId) {
+    raiseCustomError("No data", 400);
+  }
+  if (
+    departureId < MINDEPARTUREID ||
+    departureId > MAXDEPARTUREID ||
+    arrivalId < MINDEPARTUREID ||
+    arrivalId > MAXDEPARTUREID
+  ) {
+    raiseCustomError("invalid data", 400);
+  }
+
+  const price = await bookingService.getLowestPrice(
+    date,
+    departureId,
+    arrivalId
+  );
+  return res.status(200).json({ price });
+});
+
+module.exports = { getCities, searchFlight, getLowestPrice };

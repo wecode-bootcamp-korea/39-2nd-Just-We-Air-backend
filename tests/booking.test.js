@@ -114,4 +114,33 @@ describe("book tickets", () => {
         ],
       });
   });
+
+  test("SUCCESS: get lowest price", async () => {
+    await request(app)
+      .get("/booking/lowest-price?date=2022-12-09&departureId=2&arrivalId=3")
+      .expect(200)
+      .expect({
+        price: [
+          {
+            date: "22-12-09",
+            lowest_price: "30000.00",
+          },
+        ],
+      });
+  });
+
+  test("FAIL: get lowest price - invaild query", async () => {
+    await request(app)
+      .get("/booking/lowest-price?date=2022-12-09&departureId=2&arrivalId=99")
+      .expect(400)
+      .expect({
+        message: "invalid data",
+      });
+  });
+
+  test("FAIL: get lowest price - no data", async () => {
+    await request(app).get("/booking/lowest-price").expect(400).expect({
+      message: "No data",
+    });
+  });
 });

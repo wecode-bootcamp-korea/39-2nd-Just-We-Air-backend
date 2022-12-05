@@ -53,4 +53,25 @@ GROUP by
   return flightList;
 };
 
-module.exports = { getCities, searchFlight };
+const getLowestPrice = async (date, lastDate, departureId, arrivalId) => {
+  const lowestPrice = await appDataSource.query(
+    `
+    SELECT
+      DATE_FORMAT(tickets.departure_date, '%y-%m-%d') AS date, MIN(tickets_options.price) AS lowest_price
+    FROM
+      tickets,
+      tickets_options
+    WHERE 
+      DATE(tickets.departure_date) BETWEEN DATE(?)
+      AND DATE(?)
+      AND tickets.departure_id = ?
+      AND tickets.arrival_id = ?
+      AND tickets.id = tickets_options.ticket_id
+    GROUP BY date
+    `,
+    [date, lastDate, departureId, arrivalId]
+  );
+  return lowestPrice;
+};
+
+module.exports = { getCities, searchFlight, getLowestPrice };
