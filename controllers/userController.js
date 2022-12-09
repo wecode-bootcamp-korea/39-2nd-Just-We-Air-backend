@@ -14,7 +14,7 @@ const signIn = catchAsync(async (req, res) => {
 });
 
 const updateUser = catchAsync(async (req, res) => {
-  const userId = req.user.id;
+  const userId = req.user;
   const { first_name, last_name, birth, mobile_number, email } = req.body;
 
   if (!first_name || !last_name || !birth || !mobile_number || !email) {

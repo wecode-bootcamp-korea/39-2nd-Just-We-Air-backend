@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="kor">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .alll_wrap {
+        width: 900px;
+        height: 400px;
+        background-color: white;
+        border: 2px dotted #989898;
+      }
+      .title_wrap {
+        display: flex;
+        justify-content: center;
+        height: 150px;
+        width: 900px;
+      }
+      .title_content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 2px dotted #989898;
+        height: 150px;
+        width: 900px;
+      }
+      .air_name {
+        text-align: center;
+        font-size: 50px;
+        padding: 20px 0;
+        color: #333333;
+        font-weight: 550;
+      }
+      img {
+        width: 80px;
+        height: 80px;
+        padding-left: 10px;
+      }
+      .content_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+      }
+      .left_wrap {
+        height: 232px;
+        width: 270px;
+        padding: 10px;
+        justify-content: left;
+        border-right: 2px dotted #989898;
+      }
+      .name_wrapper {
+        padding: 10px;
+        margin: 10px;
+        font-size: 18px;
+        font-weight: 550;
+      }
+      .passenger_name_update {
+        font-size: 22px;
+        margin: 5px 0;
+      }
+      .right_wrap {
+        height: 200px;
+        width: 460px;
+        justify-content: left;
+        margin-left: 10px;
+      }
+      .time_wrapper {
+        display: flex;
+        margin: 10px 0;
+        font-size: 18px;
+        font-weight: 550;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="alll_wrap">
+      <div
+        class="title_wrap"
+        style="font-family: 'Times New Roman', Times, serif"
+      >
+        <div class="title_content">
+          <div class="air_name">JUST WE AIR BOARDING PASS</div>
+          <img
+            src="https://wcfbucket.s3.ap-northeast-2.amazonaws.com/WCF/pngwing.com.png"
+            alt="logo"
+          />
+        </div>
+      </div>
+
+      <div class="content_wrapper" style="font-family: sans-serif">
+        <div class="left_wrap">
+          <div class="name_wrapper">
+            <div class="passenger_name">이름(ENGLISH) :</div>
+            <div class="passenger_name_update">{{english_name}}</div>
+          </div>
+          <div class="name_wrapper">
+            <div class="passenger_name">폰 번호 :</div>
+            <div class="passenger_name_update">{{phone}}</div>
+          </div>
+        </div>
+
+        <div class="right_wrap">
+          <div class="time_wrapper">
+            <div class="time_name">출발시간 :</div>
+            <div class="time_name_update">{{departure_datetime}}</div>
+          </div>
+          <div class="time_wrapper">
+            <div class="time_name">출발지 :</div>
+            <div class="time_name_update">{{departure_city}}</div>
+          </div>
+          <div class="time_wrapper">
+            <div class="time_name">도착시간 :</div>
+            <div class="time_name_update">{{arrival_datetime}}</div>
+          </div>
+          <div class="time_wrapper">
+            <div class="time_name">도착지 :</div>
+            <div class="time_name_update">{{arrival_city}}</div>
+          </div>
+          <div class="time_wrapper">
+            <p class="flight_number">편명 : {{flight_number}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

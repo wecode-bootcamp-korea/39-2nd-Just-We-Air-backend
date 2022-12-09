@@ -36,6 +36,7 @@ const updateUser = async (
   mobile_number,
   email
 ) => {
+  console.log(userId, first_name, last_name, birth, mobile_number, email);
   await appDataSource.query(
     `UPDATE users
     SET first_name =?,last_name =?,birth=?,mobile_number= ?,email = ?

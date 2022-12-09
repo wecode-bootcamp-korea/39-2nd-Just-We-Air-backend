@@ -13,7 +13,7 @@ const loginRequired = async (req, res, next) => {
       return res.status(error.statusCode).json({ message: error.message });
     }
 
-    const payLoad = await jwt.verify(accessToken, secretKey);
+    const payLoad = jwt.verify(accessToken, secretKey);
     const user = await userService.getUserById(payLoad.userId);
 
     if (!user) {
