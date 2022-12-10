@@ -8,8 +8,10 @@
 
 - 제주항공 사이트를 모티브로한 항공권 예매 사이트
 - 기간 : 2022.11.28~ 12.9
+  <br />
+  <br />
 
-## ✈️ One-Way Service
+## 🔥 One-Way Service
 
 1. 소셜 로그인 및 회원가입 <br />
 2. 항공권 조회 및 예약<br />
@@ -34,9 +36,8 @@
 - Notion과 Trello를 사용하여 scrum, sprint 진행
 - GitBook과 Postman을 활용하여 API 및 mockdata형식 공유
 - `Notion`, `Trello`, `Git-book`, `Table plus`, `Git`, `Slack`, `dbDiagram`, `Postman`
-
-<Br />
-<br />
+  <Br />
+  <br />
 
 ## ✈️ Team JUSTWEAIR
 
